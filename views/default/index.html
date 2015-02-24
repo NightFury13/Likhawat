@@ -1,0 +1,30 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+{{if 'message' in globals():}}
+<h3>{{=message}}</h3>
+
+<h4>{{=T('Whats left to do?')}}</h4>
+<ol>
+	<li><a href="{{=URL('default','segmenter_homepage')}}">Segmenter Homepage</a> : Have a page which on being given an image as input, creates all the segments formed in it and displays them. </li>
+	<li>On clicking on any of the images obtained from the above step, we should see the best matches for that image.</li>
+	<li>Have a page for content level-analysis (match pages on the percentage of correct match) <b> DISCUSS : What should be the similarity criteria</b></li>
+</ol>
+
+</ol>
+{{elif 'content' in globals():}}
+{{=content}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+
+{{block right_sidebar}}
+{{=A(T("Administrative Interface"), _href=URL('admin','default','index'), _class='btn',
+     _style='margin-top: 1em;')}}
+<h6>{{=T("Don't know what to do?")}}</h6>
+<ul>
+  <li>{{=A(T("Online examples"), _href=URL('examples','default','index'))}}</li>
+  <li><a href="http://web2py.com">web2py.com</a></li>
+  <li><a href="http://web2py.com/book">{{=T('Documentation')}}</a></li>
+</ul>
+{{end}}

@@ -1,0 +1,30 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+{{if 'message' in globals():}}
+<h3>{{=message}}</h3>
+
+{{for doc in displayDocuments:}}
+  <span name="image-box">
+    <a href="{{=URL('default','segmented_images')}}">
+      <img src="{{=URL('download', args=doc['doc_file'])}}" width="33%" alt="doc['doc_name']"/>
+    </a>
+  </span>
+{{pass}}
+<br/>
+<br/>
+<div name="next-page-btn" align="center">
+	<a href="{{=URL('default','segmenter_homepage?offset=%d'%(offset+15))}}" style="align:center" class="btn">View More...</a>
+</div>
+
+{{elif 'content' in globals():}}
+{{=content}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+
+{{block right_sidebar}}
+<h4>Or upload a new document!</h4>
+<br/>
+{{=docUploadForm}}
+{{end}}

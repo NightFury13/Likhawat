@@ -1,0 +1,501 @@
+timestamp: 2015-02-10T15:38:51.493815
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2015-02-10T15:38:51.496401
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-02-10T15:38:51.498609
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2015-02-10T15:38:51.501287
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2015-02-10T15:38:51.503949
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-02-10T15:38:51.506561
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2015-02-10T18:52:15.386705
+CREATE TABLE Documents(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    doc_file CHAR(512)
+);
+success!
+timestamp: 2015-02-10T18:52:15.397336
+CREATE TABLE SegmentImages(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    parentDocument INTEGER REFERENCES Documents (id) ON DELETE CASCADE,
+    img_file CHAR(512)
+);
+success!
+timestamp: 2015-02-10T19:32:32.240792
+ALTER TABLE Documents ADD doc_img_file BLOB;
+success!
+timestamp: 2015-02-10T19:32:32.268632
+ALTER TABLE SegmentImages ADD seg_img_file BLOB;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2015-02-10T19:55:08.527262
+ALTER TABLE Documents ADD don_name CHAR(512);
+success!
+success!
+success!
+success!
+timestamp: 2015-02-10T19:57:58.675786
+CREATE TABLE SegmentedImages(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    parentDocument INTEGER REFERENCES Documents (id) ON DELETE CASCADE,
+    img_file CHAR(512),
+    seg_img_file BLOB
+);
+success!
+success!
+success!
+timestamp: 2015-02-10T19:59:26.658196
+CREATE TABLE HandwrittenDocuments(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    don_name CHAR(512)
+);
+success!
+timestamp: 2015-02-10T19:59:49.865654
+CREATE TABLE hDocuments(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    don_name CHAR(512)
+);
+success!
+success!
+timestamp: 2015-02-10T20:04:33.622223
+ALTER TABLE hDocuments ADD doc_name CHAR(512);
+success!
+success!
+success!
+success!
+timestamp: 2015-02-14T18:00:57.577557
+ALTER TABLE hDocuments ADD doc_file CHAR(512);
+timestamp: 2015-02-14T18:00:57.619258
+ALTER TABLE hDocuments ADD doc_img_file BLOB;
+success!
+timestamp: 2015-02-14T18:01:31.707475
+ALTER TABLE Documents ADD doc_name CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
